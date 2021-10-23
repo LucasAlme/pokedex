@@ -10,6 +10,11 @@ const fontes = {
    regular: "Spartan-Regular"
 }
 
+const dispatchState = {
+   token: 'UPDATE_TOKEN',
+   isLogin: 'UPDATE_ISLOGIN',
+}
+
 const api = 'https://pokeapi.co/api/v2/';
 
-export { cores, api, fontes }
+export { cores, api, fontes, dispatchState }

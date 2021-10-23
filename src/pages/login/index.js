@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Image, ImageBackground, KeyboardAvoidingView, Text, View } from "react-native";
 import Button from "../../components/button";
 import Input from "../../components/input";
@@ -6,11 +6,21 @@ import { Account } from '../../models/account';
 import { validarEmail } from '../../utils/Validacoes';
 import styles from "./style";
 import DismissKeyboard from '../../components/dismissKeyboard';
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchState } from "../../utils/Constants";
 const loginImage = require('../../assets/loginImage.png');
 const logoPokemon = require('../../assets/pokemonLogo.png');
 
 export default function Login() {
+
     const [account, setAccount] = useState(new Account());
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.token);
+
+    useEffect(() => {
+        if (token !== '')
+            dispatch({ type: dispatchState.isLogin, value: true });
+    }, [token])
 
     function isValid() {
         const listErrors = [];
@@ -20,8 +30,24 @@ export default function Login() {
             Alert.alert('Campos preenchidos incorretamente', `${listErrors.join('\n\n')}`)
             return false
         }
-        Alert.alert('Sucesso', 'Login Efetuado!')
+
         return true
+    }
+
+    var rand = function () {
+        return Math.random().toString(36).substr(2);
+    };
+
+    var tokenFunction = function () {
+        return rand() + rand();
+    };
+
+    function login() {
+        if (isValid()) {
+            dispatch({ type: dispatchState.token, value: tokenFunction() });
+        } else {
+            return null
+        }
     }
     return (
         <DismissKeyboard>
@@ -36,7 +62,7 @@ export default function Login() {
                         <View style={styles.containerLogin}>
                             <Input customStyle={styles.inputStyle} placeholder="Email" width={'90%'} value={account.email} type="email-address" onChangeText={(txt) => setAccount({ ...account, email: txt })} />
                             <Input customStyle={styles.inputStyle} placeholder="Senha" width={'90%'} password value={account.senha} onChangeText={(txt) => setAccount({ ...account, senha: txt })} />
-                            <Button value="Login" customStyle={styles.btnStyle} onPress={isValid} />
+                            <Button value="Login" customStyle={styles.btnStyle} onPress={login} />
                         </View>
                     </View>
                 </ImageBackground>
