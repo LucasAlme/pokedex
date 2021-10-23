@@ -2,6 +2,8 @@
   <h1>Pokedex</h1>
   <h2>Login</h2>
   <img src="https://user-images.githubusercontent.com/69490077/138536562-ab7509c6-438f-4701-8fd7-9ccab1a45ad5.jpg" width="250px"/>
+  <h2>Home(Not Finished)</h2>
+    <img src="https://user-images.githubusercontent.com/69490077/138569281-ad1d2053-de53-4b50-b83e-c57e00406efe.jpg" width="250px"/>
   <h3>Pokedex on Android/IOS app (Not Finished)</h3>
 </div>
 # Feature
