@@ -1,6 +1,7 @@
 <div align = center >
   <h1>Pokedex</h1>
-
+  <h2>Login</h2>
+  <img src="https://user-images.githubusercontent.com/69490077/138536562-ab7509c6-438f-4701-8fd7-9ccab1a45ad5.jpg" width="250px"/>
   <h3>Pokedex on Android/IOS app (Not Finished)</h3>
 </div>
 # Feature
